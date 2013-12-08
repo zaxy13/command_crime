@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import time, os, sys
+import pickle
+
 
 def clear():
 	 os.system(['clear','cls'][os.name == 'nt'])
 
 def waitForUser(disp):
 	# press any key
+	print ""
 	dummy = raw_input(disp)
 
 ## look in to classes for these funcs ##
@@ -41,8 +44,20 @@ def prog_ins(level):
 	else:
 		return -1
 
-def email():
-	pass # look in to Json for emails... and other save actions
+def email(level, flags):
+	# need a way to add more...
+	mail = { 1:{ 'sender':"zaxy", 'sub':"welcom", 'read': False, 'messg':"welcome to the demo of command crime"} }
+	if level == 1:
+		if flags == "demo":
+			pass
+
+		else:
+			print "there is nothing here for you"
+	else:
+		print "you have no mail"
+
+def notes():
+	pass
 
 ## end ##
 
@@ -65,7 +80,7 @@ def cmdLoop(cmd):
 	elif cmd == "exit":
 		return 2
 	elif cmd == "email":
-		email()
+		email(1, "demo")
 		return 3
 	else:
 		story("I don't know that, try help for help",2,0.05,True)
